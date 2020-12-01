@@ -21,9 +21,12 @@ def create_project_hash
   # binding.pry
 
   # Iterate through the projects
- kickstarter.css("li.project.grid_4").each do |project|
-   projects[project] = {}
- end
+    kickstarter.css("li.project.grid_4").each do |project|
+  # Makes each project title a key, and the value is another 
+  # hash with each of our other data points as keys.
+     title = project.css("h2.bbcard_name strong a").text
+     projects[title.to_sym] = {}
+   end
 
  # return the projects hash
  projects
